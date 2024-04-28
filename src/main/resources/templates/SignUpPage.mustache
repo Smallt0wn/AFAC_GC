@@ -1,0 +1,98 @@
+{{>layout/header}}
+
+<div class="py-5 text-center">
+    <h2><b>Sign Up Page</b></h2>
+    <p class="lead">You should write down the appropriate content</p>
+</div>
+
+<div class="container">
+    <div class="row g-5 justify-content-center">
+        <div class="col-md-7 col-lg-8">
+            <form class="needs-validation" novalidate>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="UserId" class="form-label">ID</label>
+                        <input type="text" class="form-control" id="userId" placeholder="Range in 3~12 / only in korean & English" value="" required>
+                        <div class="invalid-feedback">
+                            Valid ID is required.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="UserPassword" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="userPassword" placeholder="Range in 8~12 / Need to add Uppercase, number, special characters " value="" required>
+                        <div class="invalid-feedback">
+                            Valid Password is required.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="userName" class="form-label">Name</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="userName" placeholder="Only in Korean" required>
+                            <div class="invalid-feedback">
+                                Valid name is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="userName" placeholder="01012345678" required>
+                            <div class="invalid-feedback">
+                                Valid phone number is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="email" class="form-label">Email <span class="text-body-secondary"></span></label>
+                        <input type="email" class="form-control" id="email" placeholder="you@gachon.ac.kr">
+                        <div class="invalid-feedback">
+                            Please enter a valid email address
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="department" class="form-label">Department</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="department" placeholder="Enter Full department" required>
+                            <div class="invalid-feedback">
+                                Valid Department is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="studentId" class="form-label">Student ID</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="studentId" placeholder="YYYY12345" required>
+                            <div class="invalid-feedback">
+                                 StudentID is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="userState" class="form-label">State</label>
+                        <select class="form-select" id="userState" required>
+                            <option value="">Choose...</option>
+                            <option>재학</option>
+                            <option>휴학</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <button class="w-100 btn btn-secondary btn-lg" type="submit">Sign Up</button>
+
+                <hr class="my-4">
+
+            </form>
+        </div>
+    </div>
+</div>
+{{>layout/footer}}
