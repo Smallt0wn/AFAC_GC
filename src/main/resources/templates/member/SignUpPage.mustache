@@ -1,0 +1,73 @@
+{{>layout/header}}
+
+<div class="py-5 text-center">
+    <h2><b>Sign Up Page</b></h2>
+    <p class="lead">You should write down the appropriate content</p>
+</div>
+
+<div class="container">
+    <div class="row g-5 justify-content-center">
+        <div class="col-md-7 col-lg-8">
+            <form action="/member/new" role="form" method="post">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                <div class="row g-3">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Type your school Email">
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#emailError}} {{emailError}} {{/emailError}}</p>
+                    </div>
+                    <div class="col-12">
+                        <label for="userPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="userPassword" name="password" placeholder="Type Your Password" required>
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#passwordError}} {{passwordError}} {{/passwordError}}</p>
+                    </div>
+                    <div class="col-12">
+                        <label for="userName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="userName" name="name" placeholder="Type Your Name" required>
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#nameError}} {{nameError}} {{/nameError}}</p>
+                    </div>
+                    <div class="col-12">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Type Yoru PhoneNumber" required>
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#phoneNumberError}} {{phoneNumberError}} {{/phoneNumberError}}</p>
+                    </div>
+                    <div class="col-6">
+                        <label for="department" class="form-label">Department</label>
+                        <input type="text" class="form-control" id="department" name="department" placeholder="Type Full department" required>
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#departmentError}} {{departmentError}} {{/departmentError}}</p>
+                    </div>
+                    <div class="col-6">
+                        <label for="studentId" class="form-label">Student ID</label>
+                        <input type="text" class="form-control" id="studentId" name="studentId" placeholder="Type your StudentID" required>
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#studentIdError}} {{studentIdError}} {{/studentIdError}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="userState" class="form-label">State</label>
+                        <select class="form-select" id="userState" name="state" required>
+                            <option value="">Choose...</option>
+                            <option>재학</option>
+                            <option>휴학</option>
+                        </select>
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#stateError}} {{stateError}} {{/stateError}}</p>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <button type="submit" class="btn btn-secondary btn-lg">Sign Up</button>
+
+                <hr class="my-4">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}

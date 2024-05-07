@@ -10,20 +10,21 @@ public class IndexController {
         return "MainPage";
     }
 
-    @GetMapping("/LoginMainPage")
-    public String login(){return "LoginMainPage"; }
-
     @GetMapping("/SettingPage")
     public String setting(){return "SettingPage"; }
 
-    @GetMapping("/SignUpPage")
-    public String signup(){return "SignUpPage"; }
+    @GetMapping("/member/LoginMainPage")
+    public String login(){return "member/LoginMainPage"; }
+
+    @GetMapping("/member/SignUpPage")
+    public String signUp(){return "member/SignUpPage"; }
 
     @GetMapping("/ClubPage")
     public String club(){return "ClubPage"; }
 
     @GetMapping("/ContentPage")
     public String content(){return "ContentPage"; }
+
 }
 
 
