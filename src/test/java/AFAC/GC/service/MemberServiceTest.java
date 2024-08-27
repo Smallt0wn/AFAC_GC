@@ -24,9 +24,9 @@ class MemberServiceTest {
     public Member createUser(){
         MemberFormDto memberFormDto = new MemberFormDto();
 
-        memberFormDto.setEmail("test1@gachon.ac.kr");
+        memberFormDto.setEmail("test@gachon.ac.kr");
         memberFormDto.setName("홍길동");
-        memberFormDto.setPassword("123456");
+        memberFormDto.setPassword("1234");
         memberFormDto.setDepartment("소프트웨어학과");
         memberFormDto.setPhoneNumber("01012345678");
         memberFormDto.setStudentNumber("123456");
@@ -57,7 +57,7 @@ class MemberServiceTest {
         memberService.saveMember(member1);
         Throwable e = assertThrows(IllegalStateException.class, () -> {
             memberService.saveMember(member2);});
-        assertEquals("already exist User", e.getMessage());
+        assertEquals("이미 존재하는 이메일입니다", e.getMessage());
     }
 
 }

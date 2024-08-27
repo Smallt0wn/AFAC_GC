@@ -1,0 +1,64 @@
+{{>layout/header}}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <form id="filterForm" method="get" action="/club/ClubPageSort">
+                <div class="form-group">
+                    <label for="classifyClub">동아리 종류</label>
+                    <select class="form-control" name="classifyClub" id="classifyClub">
+                        <option>선택하기</option>
+                        <option value="CentralClub">중앙 동아리</option>
+                        <option value="DepartmentClub">학과 동아리</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">필터 적용</button>
+            </form>
+        </div>
+        <div class="col-md-9" id="posts_list">
+            <div class="row" id="club_list">
+                {{#clubs}}
+                    <div class="col-md-4">
+                        <a href="/club/ClubContent/{{id}}" style="text-decoration: none; color: inherit;">
+                            <div class="card shadow-sm mb-4">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c"/>
+                                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">CLUB LOGO</text>
+                                </svg>
+                                <div class="card-body">
+                                    <p class="card-text">{{clubName}}</p>
+                                    <p class="card-text">{{contactNumber}}</p>
+                                    <p class="card-text">{{classifyClub}}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {{/clubs}}
+            </div>
+            <div class="pagination justify-content-center">
+                {{#hasPrev}}
+                    <a href="?page={{previous}}" role="button" class="btn btn-secondary">prev</a>
+                {{/hasPrev}}
+                {{^hasPrev}}
+                    <a href="?page={{previous}}" role="button" class="btn btn-secondary disabled">prev</a>
+                {{/hasPrev}}
+                {{#hasNext}}
+                    <a href="?page={{next}}" role="button" class="btn btn-secondary">next</a>
+                {{/hasNext}}
+                {{^hasNext}}
+                    <a href="?page={{next}}" role="button" class="btn btn-secondary disabled">next</a>
+                {{/hasNext}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}

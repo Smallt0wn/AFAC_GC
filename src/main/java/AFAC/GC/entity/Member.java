@@ -7,6 +7,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "member")
 @Getter @Setter
@@ -29,13 +32,15 @@ public class Member {
     private String phoneNumber;
     private String password;
 
-    @Column(unique = true)
     private String studentNumber;
 
     private String department;
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    private List<Club> clubs = new ArrayList<>();
 
 
     public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
@@ -45,6 +50,7 @@ public class Member {
         member.setName(memberFormDto.getName());
         member.setEmail(memberFormDto.getEmail());
         member.setPhoneNumber(memberFormDto.getPhoneNumber());
+
         member.setStudentNumber(memberFormDto.getStudentNumber());
         member.setDepartment(memberFormDto.getDepartment());
 
@@ -55,6 +61,4 @@ public class Member {
 
         return member;
     }
-
-
 }

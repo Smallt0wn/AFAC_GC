@@ -1,0 +1,68 @@
+{{>layout/header}}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .table {
+        margin-top: 20px;
+        background-color: #ffffff;
+    }
+    .thead-strong {
+        background-color: #343a40;
+        color: #ffffff;
+    }
+    .table-horizontal th, .table-horizontal td {
+        vertical-align: middle;
+        text-align: center;
+    }
+    .container {
+        margin-top: 50px;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .btn {
+        margin: 5px;
+    }
+</style>
+<div class="container">
+    <h1>Club ContentPage</h1>
+
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <th>로고</th>
+            <th>동아리이름</th>
+            <th>동아리대표</th>
+            <th>동아리 연락처</th>
+            <th>동아리 설명</th>
+            <th>동아리 분류</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        <tr>
+            <td><img src="{{imgUrl}}" alt="동아리 로고" width="100"></td>
+            {{#club}}
+            <td>{{clubName}}</td>
+            <td>{{member.name}}</td>
+            <td>{{contactNumber}}</td>
+            <td>{{description}}</td>
+            <td>{{classifyClub}}</td>
+        {{/club}}
+        </tr>
+        </tbody>
+    </table>
+
+    <h2 class="text-center">Actions</h2>
+    <div class="text-center">
+        {{#club}}
+            <button class="btn btn-primary" onclick="window.location.href='/clubs/edit/{{id}}'">Edit</button>
+            <button class="btn btn-danger" onclick="window.location.href='/clubs/delete/{{id}}'">Delete</button>
+        {{/club}}
+    </div>
+</div>
+
+
+
+{{>layout/footer}}

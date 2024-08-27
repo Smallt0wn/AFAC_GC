@@ -9,53 +9,49 @@
     <div class="row g-5 justify-content-center">
         <div class="col-md-7 col-lg-8">
             <form action="/member/new" role="form" method="post">
-                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
                 <div class="row g-3">
                     <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Type your school Email">
+                        <label>Email</label>
+                        <input type="email" class="form-control" id="mail" name="email" value="{{#memberFormDto}}{{memberFormDto.email}}{{/memberFormDto}}" placeholder="Type your school Email">
                         <!-- Mustache Syntax for Error Messages -->
                         <p class="fieldError">{{#emailError}} {{emailError}} {{/emailError}}</p>
+                        <p class="fieldError">{{#errorMessage}} {{errorMessage}} {{/errorMessage}}</p>
+                        <!--<button type="button" id="sendBtn" name="sendBtn">인증번호</button>
+                        <div id="mail_number" name="mail_number">
+                            <input type="text" name="number" id="number" style="width:250px; margin-top: -10px" placeholder="인증번호 입력">
+                            <button type="button" name="confirmBtn" id="confirmBtn">이메일 인증</button>
+                        </div>
+                        <input type="hidden" id="Confirm"> -->
                     </div>
-                    <div class="col-12">
-                        <label for="userPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="userPassword" name="password" placeholder="Type Your Password" required>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Type Your Password">
                         <!-- Mustache Syntax for Error Messages -->
                         <p class="fieldError">{{#passwordError}} {{passwordError}} {{/passwordError}}</p>
                     </div>
-                    <div class="col-12">
-                        <label for="userName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="userName" name="name" placeholder="Type Your Name" required>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" value="{{#memberFormDto}}{{memberFormDto.name}}{{/memberFormDto}}" placeholder="Type Your Name">
                         <!-- Mustache Syntax for Error Messages -->
                         <p class="fieldError">{{#nameError}} {{nameError}} {{/nameError}}</p>
                     </div>
-                    <div class="col-12">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Type Yoru PhoneNumber" required>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" class="form-control" name="phoneNumber" value="{{#memberFormDto}}{{memberFormDto.phoneNumber}}{{/memberFormDto}}" placeholder="Type Your PhoneNumber">
                         <!-- Mustache Syntax for Error Messages -->
                         <p class="fieldError">{{#phoneNumberError}} {{phoneNumberError}} {{/phoneNumberError}}</p>
                     </div>
-                    <div class="col-6">
-                        <label for="department" class="form-label">Department</label>
-                        <input type="text" class="form-control" id="department" name="department" placeholder="Type Full department" required>
+                    <div class="form-group">
+                        <label>Department</label>
+                        <input type="text" class="form-control" name="department" value="{{#memberFormDto}}{{memberFormDto.department}}{{/memberFormDto}}" placeholder="Type Full department">
                         <!-- Mustache Syntax for Error Messages -->
                         <p class="fieldError">{{#departmentError}} {{departmentError}} {{/departmentError}}</p>
                     </div>
-                    <div class="col-6">
-                        <label for="studentId" class="form-label">Student ID</label>
-                        <input type="text" class="form-control" id="studentId" name="studentId" placeholder="Type your StudentID" required>
+                    <div class="form-group">
+                        <label>Student Number</label>
+                        <input type="text" class="form-control" name="studentNumber" value="{{#memberFormDto}}{{memberFormDto.studentNumber}}{{/memberFormDto}}" placeholder="Type your StudentNumber">
                         <!-- Mustache Syntax for Error Messages -->
-                        <p class="fieldError">{{#studentIdError}} {{studentIdError}} {{/studentIdError}}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="userState" class="form-label">State</label>
-                        <select class="form-select" id="userState" name="state" required>
-                            <option value="">Choose...</option>
-                            <option>재학</option>
-                            <option>휴학</option>
-                        </select>
-                        <!-- Mustache Syntax for Error Messages -->
-                        <p class="fieldError">{{#stateError}} {{stateError}} {{/stateError}}</p>
+                        <p class="fieldError">{{#studentNumberError}} {{studentNumberError}} {{/studentNumberError}}</p>
                     </div>
                 </div>
 
@@ -69,5 +65,6 @@
         </div>
     </div>
 </div>
+
 
 {{>layout/footer}}

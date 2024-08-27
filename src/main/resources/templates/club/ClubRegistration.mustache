@@ -1,0 +1,67 @@
+{{>layout/header}}
+
+
+<div class="py-5 text-center">
+    <h2><b>Club Setting page</b></h2>
+    <p class="lead">알맞은 정보를 입력해 주세요.</p>
+</div>
+
+<div class="container">
+    <div class="row g-5 justify-content-center">
+        <div class="col-md-7 col-lg-8">
+            <form action="/club/new" role="form" method="post" enctype="multipart/form-data">
+                <div class="row g-3">
+                    <div class="form-group">
+                        <label>동아리 이름</label>
+                        <input type="text" class="form-control" name="clubName" value="{{#clubFormDto}}{{clubFormDto.clubName}}{{/clubFormDto}}" placeholder="동아리 이름을 입력해주세요">
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#nameError}} {{nameError}} {{/nameError}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>동아리 종류</label>
+                        <select class="form-control" name="classifyClub" id="classifyClub">
+                            <option value="CentralClub">중앙 동아리</option>
+                            <option value="DepartmentClub">학과 동아리</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">동아리 소개</label>
+                        <textarea class="form-control" id="description" name="description" rows="10" placeholder="동아리 소개 글을 간단히 적어주세요">{{#memberFormDto}}{{memberFormDto.description}}{{/memberFormDto}}</textarea>
+                        <!-- Mustache 구문을 사용한 오류 메시지 -->
+                        <p class="fieldError">{{#descriptionError}} {{descriptionError}} {{/descriptionError}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>동아리 연락처</label>
+                        <input type="text" class="form-control" name="contactNumber" value="{{#memberFormDto}}{{memberFormDto.department}}{{/memberFormDto}}" placeholder="대표 연락처를 입력해 주세요">
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#contactNumberError}} {{contactNumberError}} {{/contactNumberError}}</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>동아리 SNS 링크</label>
+                        <input type="text" class="form-control" name="snsLink" value="{{#memberFormDto}}{{memberFormDto.studentNumber}}{{/memberFormDto}}" placeholder="대표 SNS 링크를 입력해주세요">
+                        <!-- Mustache Syntax for Error Messages -->
+                        <p class="fieldError">{{#snsLinkError}} {{snsLinkError}} {{/snsLinkError}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>동아리 로고 이미지</label>
+                    <input type="file" class="form-control" name="clubLogoImg">
+                    <!-- Mustache Syntax for Error Messages -->
+                    <p class="fieldError">{{#clubLogoImgError}} {{clubLogoImgError}} {{/clubLogoImgError}}</p>
+                    <p class="fieldError">{{#errorMessage}} {{errorMessage}} {{/errorMessage}}</p>
+                </div>
+
+                <hr class="my-4">
+
+                <button type="submit" class="btn btn-secondary btn-lg">등록하기</button>
+
+                <hr class="my-4">
+
+            </form>
+        </div>
+    </div>
+</div>`
+
+{{>layout/footer}}

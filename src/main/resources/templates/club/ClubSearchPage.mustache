@@ -1,0 +1,55 @@
+{{>layout/header}}
+
+<div id="posts_list" class="container mt-5">
+    <div class="row">
+        {{#clubs}}
+            <div class="col-md-4">
+                <a href="/club/ClubContent/{{id}}" style="text-decoration: none; color: inherit;">
+                    <div class="card shadow-sm mb-4">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#55595c"/>
+                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">CLUB LOGO</text>
+                        </svg>
+                        <div class="card-body">
+                            <p class="card-text">{{clubName}}</p>
+                            <p class="card-text">{{contactNumber}}</p>
+                            <p class="card-text">{{classifyClub}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {{/clubs}}
+        {{^clubs}}
+            <div class="col-md-12">
+                <div class="alert alert-warning" role="alert">
+                    No posts found.
+                </div>
+            </div>
+        {{/clubs}}
+    </div>
+    <div class="pagination justify-content-center">
+        {{#hasPrev}}
+            <a href="?page={{previous}}" role="button" class="btn btn-secondary">prev</a>
+        {{/hasPrev}}
+        {{^hasPrev}}
+            <a href="?page={{previous}}" role="button" class="btn btn-secondary disabled">prev</a>
+        {{/hasPrev}}
+        {{#hasNext}}
+            <a href="?page={{next}}" role="button" class="btn btn-secondary">next</a>
+        {{/hasNext}}
+        {{^hasNext}}
+            <a href="?page={{next}}" role="button" class="btn btn-secondary disabled">next</a>
+        {{/hasNext}}
+    </div>
+</div>
+
+{{>layout/footer}}
