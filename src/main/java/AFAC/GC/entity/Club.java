@@ -1,57 +1,53 @@
 package AFAC.GC.entity;
 
 import AFAC.GC.constant.ClassifyClub;
-import AFAC.GC.dto.ClubFormDto;
-import AFAC.GC.dto.ClubLogoImgDto;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "club")
-@Getter @Setter
-@ToString
+@Getter
 @NoArgsConstructor
-@AllArgsConstructor
-
-public class Club extends BaseEntity{
+public class Club {
 
     @Id
-    @Column(name="club_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "club_id")
     private Long id;
 
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String clubName;
 
-    private ClassifyClub classifyClub; // "중앙동아리", "학과동아리" CentralClub, DepartmentClub
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ClassifyClub classifyClub;
 
     @Lob
     private String description;
 
     private String snsLink;
-
     private String contactNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
+    // 연관 관계 설정 메서드
+    public void assignMember(Member member) {
+        this.member = member; // Member와 연관 설정
+    }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "club_logo_img_id") // 외래 키로 사용
-    private ClubLogoImg clubLogoImg;
+    public void removeMember() {
+        this.member = null; // Member와의 연관 관계 해제
+    }
 
-    public static Club createClub(ClubFormDto clubFormDto, Member member) {
-            Club club = new Club();
-
-            club.setClubName(clubFormDto.getClubName()); // 동아리 이름 설정
-            club.setClassifyClub(clubFormDto.getClassifyClub()); // Enum 값 설정
-
-            club.setDescription(clubFormDto.getDescription()); // 동아리 소개 설정
-            club.setSnsLink(clubFormDto.getSnsLink()); // SNS 링크 설정
-            club.setContactNumber(clubFormDto.getContactNumber()); // 대표 연락처 설정
-            club.setMember(member); // 동아리장 설정
-        
-            return club;
-        }
+    @Builder
+    public Club(String clubName, ClassifyClub classifyClub, String description, String snsLink, String contactNumber) {
+        this.clubName = clubName;
+        this.classifyClub = classifyClub;
+        this.description = description;
+        this.snsLink = snsLink;
+        this.contactNumber = contactNumber;
+    }
 }

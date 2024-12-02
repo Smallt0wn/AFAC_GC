@@ -127,28 +127,27 @@ public class ClubController {
     public String clubSetting(){return "club/ClubRegistration"; }
 
     @PostMapping(value = "/club/new")
-    public String clubNew(@Valid ClubFormDto clubFormDto, BindingResult bindingResult, Model model, @RequestParam("clubLogoImg")
-    List<MultipartFile> ClubLogoImgFileList, @AuthenticationPrincipal User currentUser) {
-
+    public String clubNew(@Valid ClubFormDto clubFormDto, BindingResult bindingResult, Model model,
+                          @RequestParam("clubLogoImgFileList") List<MultipartFile> clubLogoImgFileList,
+                          @AuthenticationPrincipal User currentUser) {
         if (bindingResult.hasErrors()) {
             return "club/ClubRegistration";
         }
 
-        if (ClubLogoImgFileList.get(0).isEmpty() && clubFormDto.getId() == null) {
+        if (clubLogoImgFileList.get(0).isEmpty() && clubFormDto.getId() == null) {
             model.addAttribute("errorMessage", "로고 이미지는 필수 입력 값입니다.");
             return "club/ClubRegistration";
         }
 
         try {
             Member member = memberService.findBy(currentUser.getUsername());
-            clubService.saveLogo(clubFormDto, ClubLogoImgFileList, member.getId());
+            clubService.saveClubWithLogo(clubFormDto, clubLogoImgFileList, member.getId());
         } catch (Exception e) {
-            model.addAttribute("errorMessage", "동아리 등록 중 에러가 발생하였습니다.");
+            model.addAttribute("errorMessage", "동아리 등록 중 오류가 발생했습니다.");
             return "club/ClubRegistration";
         }
 
-        return "redirect:/club/ClubPage";
-    } // 동아리 정보 저장
+        return "redirect:/club/list";    }
 
 }
 

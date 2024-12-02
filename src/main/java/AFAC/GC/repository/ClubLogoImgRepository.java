@@ -9,8 +9,5 @@ import java.util.List;
 public interface ClubLogoImgRepository extends JpaRepository<ClubLogoImg, Long> {
     List<ClubLogoImg> findByClubIdOrderByIdAsc(Long clubId);
 
-
-
-
 }
 
